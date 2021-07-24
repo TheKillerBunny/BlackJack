@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace BlackJack
 {
     class Program
@@ -12,7 +13,27 @@ namespace BlackJack
             var cards = CreateCards();
             var deck = CreateShuffledDeck(cards);
 
-            foreach (var card in deck)
+            //foreach (var card in deck)
+            //{
+            //    Console.WriteLine($"{card}");
+            //}
+
+            List<Card> playersHand = new List<Card>();
+            List<Card> dealersHand = new List<Card>();
+
+            playersHand.Add(deck.Pop());
+            dealersHand.Add(deck.Pop());
+            playersHand.Add(deck.Pop());
+            dealersHand.Add(deck.Pop());
+
+            Console.WriteLine("Player's hand:");
+            foreach (var card in playersHand)
+            {
+                Console.WriteLine(card);
+            }
+
+            Console.WriteLine("Dealer's hand:");
+            foreach (var card in dealersHand)
             {
                 Console.WriteLine(card);
             }
@@ -47,12 +68,12 @@ namespace BlackJack
 
 
             //------- do all this till the original list is empty
-                //------ generate a random number that's in the index's of the cards
-                //------ get the card at that number
-                //------ remove the card from the original list at that index
-                //------ push the card onto the stack
+            //------ generate a random number that's in the index's of the cards
+            //------ get the card at that number
+            //------ remove the card from the original list at that index
+            //------ push the card onto the stack
 
-            while(cards.Count > 0)
+            while (cards.Count > 0)
             {
                 int RandomIndex = rng.Next(0, cards.Count);
                 var card = cards[RandomIndex];
@@ -60,6 +81,7 @@ namespace BlackJack
                 deck.Push(card);
             }
             return deck;
+
         }
     }
 }
